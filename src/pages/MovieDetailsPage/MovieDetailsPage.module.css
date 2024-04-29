@@ -1,0 +1,14 @@
+.btnBack {
+	text-decoration: none;
+	color: rgb(47, 28, 4);
+	border: 1px solid;
+	border-radius: 10px;
+	margin: 8px;
+	padding: 8px;
+	height: min-content;
+}
+
+.wrap {
+	display: flex;
+	margin-top: 8px;
+}

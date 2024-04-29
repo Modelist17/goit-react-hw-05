@@ -1,0 +1,17 @@
+.nav {
+	display: block;
+	align-items: center;
+	gap: 4px;
+	box-shadow: 0 5px 5px -5px #333;
+}
+
+.navLink {
+	display: inline-flex;
+	padding: 14px 10px;
+	text-decoration: none;
+	color: black;
+}
+
+.active {
+	color: rgb(187, 87, 87);
+}
