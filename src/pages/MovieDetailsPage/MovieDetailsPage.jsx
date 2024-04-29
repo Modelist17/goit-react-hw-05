@@ -1,7 +1,11 @@
-// MovieDetailsPage.jsx
-
-import { Suspense, lazy, useEffect, useRef, useState } from "react";
-import { Link, useParams, useLocation, Outlet, Navigate } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import {
+  Link,
+  useParams,
+  useLocation,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
 import { fetchMovieDetails } from "../../services/apiMovieDetails.js";
 
 import css from "./MovieDetailsPage.module.css";
@@ -10,7 +14,7 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const location = useLocation();
-  const backLinkRef = useRef(location.state ?? "/");
+  const backLinkRef = useRef(location.state?.from ?? "/");
 
   useEffect(() => {
     async function fetchMovies() {
@@ -25,11 +29,7 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   const handleGoBack = () => {
-    if (typeof backLinkRef.current === "string") {
-      return <Navigate to={backLinkRef.current} />;
-    } else {
-      return <Navigate to={backLinkRef.current.pathname} />;
-    }
+    return <Navigate to={backLinkRef.current} />;
   };
 
   return (
@@ -50,7 +50,7 @@ const MovieDetailsPage = () => {
           <h2>Overview: </h2>
           <p>{movieDetails.overview}</p>
           <h2>Genres</h2>
-          <p>{movieDetails.genres.map(genre => genre.name).join(", ")}</p>
+          <p>{movieDetails.genres.map((genre) => genre.name).join(", ")}</p>
         </div>
         <div>
           <h2>Additional information</h2>
