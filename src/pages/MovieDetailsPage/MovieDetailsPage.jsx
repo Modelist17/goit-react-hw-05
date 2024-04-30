@@ -1,10 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import {
-  Link,
-  useParams,
-  useLocation,
-  Outlet,
-} from "react-router-dom";
+import { Link, useParams, useLocation, Outlet } from "react-router-dom";
 import { fetchMovieDetails } from "../../services/apiMovieDetails.js";
 import { useHistory } from "react-router-dom";
 
