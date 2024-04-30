@@ -4,9 +4,9 @@ import {
   useParams,
   useLocation,
   Outlet,
-  useHistory,
 } from "react-router-dom";
 import { fetchMovieDetails } from "../../services/apiMovieDetails.js";
+import { useHistory } from "react-router-dom";
 
 import css from "./MovieDetailsPage.module.css";
 
