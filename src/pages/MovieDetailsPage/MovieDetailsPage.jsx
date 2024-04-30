@@ -30,8 +30,10 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   const handleGoBack = () => {
-    history.goBack(); // "Функція handleGoBack не повинна повертати компонент <Navigate>; натомість, вона повинна використовувати метод історії, як-от history.goBack() або navigate(-1), щоб повернутися до попереднього розташування"
-  };  //am I doing it right?  
+    history.goBack(); 
+  };  
+//   "Функція handleGoBack не повинна повертати компонент <Navigate>; натомість, вона повинна використовувати метод історії, як-от history.goBack() або navigate(-1), щоб повернутися до попереднього розташування"
+
 
   return (
     movieDetails && (
