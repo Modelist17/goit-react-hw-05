@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   Link,
   useParams,
   useLocation,
   Outlet,
-  Navigate,
+  useHistory,
 } from "react-router-dom";
 import { fetchMovieDetails } from "../../services/apiMovieDetails.js";
 
@@ -14,7 +14,8 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const location = useLocation();
-  const prevLocation = location.state?.from ?? "/";
+  const history = useHistory();
+  const prevLocation = useRef(location.state?.from ?? "/");
 
   useEffect(() => {
     async function fetchMovie() {
@@ -29,8 +30,8 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   const handleGoBack = () => {
-    return <Navigate to={prevLocation} />;
-  };
+    history.goBack(); // "Функція handleGoBack не повинна повертати компонент <Navigate>; натомість, вона повинна використовувати метод історії, як-от history.goBack() або navigate(-1), щоб повернутися до попереднього розташування"
+  };  //am I doing it right?  
 
   return (
     movieDetails && (
