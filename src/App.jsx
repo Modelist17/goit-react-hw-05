@@ -15,7 +15,7 @@ const MovieReviews = lazy(() =>
   import("./components/MovieReviews/MovieReviews")
 );
 
-// API Key: 1b52a32534fc318aa4becb7ad00396a2
+// API Key: 1b52a32534fc318aa4becb7ad00396a2 do not need it here
 
 function App() {
   return (
