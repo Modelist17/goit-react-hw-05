@@ -1,15 +1,19 @@
 import { useEffect, useState, useRef } from "react";
-import { Link, useParams, useLocation, Outlet } from "react-router-dom";
+import {
+  Link,
+  useParams,
+  useLocation,
+  Outlet,
+  useNavigate,
+} from "react-router-dom";
 import { fetchMovieDetails } from "../../services/apiMovieDetails.js";
-import { useHistory } from "react-router-dom";
-
 import css from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate(); // useNavigate anstelle von useHistory
   const prevLocation = useRef(location.state?.from ?? "/");
 
   useEffect(() => {
@@ -25,9 +29,8 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   const handleGoBack = () => {
-    history.goBack();
+    navigate(-1); // navigate anstelle von history.goBack()
   };
-  //   "Функція handleGoBack не повинна повертати компонент <Navigate>; натомість, вона повинна використовувати метод історії, як-от history.goBack() або navigate(-1), щоб повернутися до попереднього розташування"
 
   return (
     movieDetails && (
