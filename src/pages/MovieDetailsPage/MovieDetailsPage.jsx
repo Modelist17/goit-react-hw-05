@@ -15,7 +15,6 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  
   const prevLocation = useRef(location.state);
 
   useEffect(() => {
@@ -31,7 +30,6 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   const handleGoBack = () => {
-    // Use the ref value to navigate back or navigate to a default path
     if (prevLocation.current) {
       navigate(prevLocation.current);
     } else {
