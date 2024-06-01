@@ -13,8 +13,10 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const location = useLocation();
-  const navigate = useNavigate(); // useNavigate anstelle von useHistory
-  const prevLocation = useRef(location.state?.from ?? "/");
+  const navigate = useNavigate();
+
+  
+  const prevLocation = useRef(location.state);
 
   useEffect(() => {
     async function fetchMovie() {
@@ -29,7 +31,12 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   const handleGoBack = () => {
-    navigate(-1); // navigate anstelle von history.goBack()
+    // Use the ref value to navigate back or navigate to a default path
+    if (prevLocation.current) {
+      navigate(prevLocation.current);
+    } else {
+      navigate("/movies");
+    }
   };
 
   return (
